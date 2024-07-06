@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactImageMagnify from 'react-image-magnify';
+// import ReactImageMagnify from 'react-image-magnify';
 import { AAOC0722147, AAOC0722148, AAOC0722149, AAOC0722150, ProductImageSlider1, ProductImageSlider2, ProductImageSlider3, ProductImageSlider4, Stampimage1, Stampimage2, Stampimage3, Stampimage4 } from '../image';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -69,7 +69,7 @@ export default class singleproductimg extends Component {
             ))}
           </div>
           <div className="SelectedImage animated-background prel">
-            <ReactImageMagnify
+            {/*<ReactImageMagnify
               smallImage={{
                 alt: 'Wristwatch by Ted Baker London',
                 src: thumbnailImages[activeThumbnailIndex],
@@ -87,7 +87,7 @@ export default class singleproductimg extends Component {
                 height: '100%',
                 zIndex: 1,
               }}
-            />
+            />*/}
           </div>
         </div>
         <div className="ProductImageSlider_mobile">

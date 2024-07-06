@@ -58,9 +58,6 @@ const Header = () => {
                                 <div className='currencyContainer dsmnone'>
                                     <select name="cars" id="cars" className='currency demi-bold'>
                                         <option value="">INR</option>
-                                        <option value="">AUD</option>
-                                        <option value="">GBP</option>
-                                        <option value="">CAD</option>
                                     </select>
                                 </div>
                                 <button className="currencyContainer navbar-toggle" onClick={toggleNavbar}>
@@ -102,12 +99,12 @@ const Header = () => {
                                        <Link to="/wishlist" style={{margin:'0px'}}> <img src={Heart} alt="logo" className='IconBtn' /> </Link>
                                     </Button>
 
-                                    <Button className="prel btn-icon p-l-0 p-r-0" style={{ background: 'none' }}>
-                                    <Link to="/myaccount" style={{margin:'0px'}}> <img src={User} alt="logo" className='user-icon'/> </Link>
-                                    </Button>
                                     {/* <Button className="prel btn-icon p-l-0 p-r-0" style={{ background: 'none' }}>
-                                        <img src={User} alt="logo" className='IconBtn' onClick={() => setModalShow(true)}/>
+                                        <Link to="/myaccount" style={{margin:'0px'}}> <img src={User} alt="logo" className='user-icon'/> </Link>
                                     </Button> */}
+                                    <Button className="prel btn-icon p-l-0 p-r-0" style={{ background: 'none' }}>
+                                        <img src={User} alt="logo" className='IconBtn' onClick={() => setModalShow(true)}/>
+                                    </Button>
                                     <Button className="prel btn-icon p-l-0 p-r-0" style={{ background: 'none' }}>
                                     <Link to="/checkout" style={{margin:'0px'}}> <img src={Shoppingcart} alt="logo" className='user-icon'/> </Link>
                                     </Button>
