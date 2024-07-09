@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { logout } from '../Redux/features/User/userSlice';
+
+
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/custom.css'
 import Headerimg1 from '../image/SALST122313_1.avif';
@@ -11,14 +17,30 @@ import { Button, Modal } from 'react-bootstrap';
 import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
 import Browse from './browse';
 import LoginModal from './loginmodal';
-import { Link } from 'react-router-dom';
+
 
 const Header = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const userInfo = useSelector((state) => state.user.userInfo);
+    // const cartCount = useSelector((state) => state.cart.items.length);
+    // const wishlistCount = useSelector((state) => state.wishlist.items.length);
+  
+    const handleLogout = () => {
+      dispatch(logout());
+      navigate('/'); // Redirect to the login page after logout
+    };
+
     const values = [true,];
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
     const [modalShow, setModalShow] = React.useState(false);
     const [isOpen, setIsOpen] = useState(false);
+
+    const modalHide = () => {
+        setModalShow(false);
+    }
 
     const MenuItem = () => {
         const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -39,7 +61,7 @@ const Header = () => {
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
-      };
+    };
     
 
     return (
@@ -102,9 +124,20 @@ const Header = () => {
                                     {/* <Button className="prel btn-icon p-l-0 p-r-0" style={{ background: 'none' }}>
                                         <Link to="/myaccount" style={{margin:'0px'}}> <img src={User} alt="logo" className='user-icon'/> </Link>
                                     </Button> */}
-                                    <Button className="prel btn-icon p-l-0 p-r-0" style={{ background: 'none' }}>
-                                        <img src={User} alt="logo" className='IconBtn' onClick={() => setModalShow(true)}/>
-                                    </Button>
+
+
+                                    {userInfo ? (
+                                        <Button  onClick={handleLogout} className="prel btn-icon p-l-0 p-r-0" style={{ background: 'none' }}>
+                                            Logout
+                                        </Button>
+                                    ) : (
+                                        <Button className="prel btn-icon p-l-0 p-r-0" style={{ background: 'none' }}>
+                                            <img src={User} alt="logo" className='IconBtn' onClick={() => setModalShow(true)}/>
+                                        </Button>
+                                    )}
+                                    
+
+
                                     <Button className="prel btn-icon p-l-0 p-r-0" style={{ background: 'none' }}>
                                     <Link to="/checkout" style={{margin:'0px'}}> <img src={Shoppingcart} alt="logo" className='user-icon'/> </Link>
                                     </Button>
@@ -475,10 +508,12 @@ const Header = () => {
                     </div>
                 </div>
             </header>
+
             <LoginModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
+                showModal={modalShow}
+                modalHide = {modalHide}
             />
+
         </div>
     );
 };
