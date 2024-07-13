@@ -15,13 +15,13 @@ import Jewel from '../components/jewel';
 import Decor from '../components/decor';
 import Junior from '../components/junior';
 import Gentlemen from '../components/gentlemen';
-import Bestselling from '../components/bestselling';
-import Celebratory from '../components/celebratory';
+import Bestselling from '../components/Bestselling';
+import Celebratory from '../components/Celebratory';
 import Celebriy from '../components/celebriy';
 import Stores from '../components/stores';
-import Studio from '../components/studio'
-import Categoryimg from '../components/categoryimg';
+import Studio from '../components/studio';
 import ImageSlider from '../components/imageSlider';
+import CategoryImgList from '../components/CategoryImgList';
 
 
 function home() {
@@ -29,7 +29,7 @@ function home() {
     <div>
       <div className='BreakPointContainer AppContent'>
         <div className='HomeSection'>
-          <Categoryimg/>
+          <CategoryImgList/>
           <Banner />
           <Flash_sale />
           <Shipped/>

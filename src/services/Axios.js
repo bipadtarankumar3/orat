@@ -2,7 +2,7 @@ import axios from "axios";
 import { getToken } from "../auth/auth";
 
 
-export const BASE_URL = process.env.REACT_APP_BASE_URL;
+export const BASE_URL = process.env.REACT_APP_API_URL;
 //export const BASE_URL = 'https://billing.vishnukhad.com/api/';
 export const localAxios = axios.create({
     baseURL:BASE_URL,

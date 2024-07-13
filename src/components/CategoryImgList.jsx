@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { categoryList } from '../services/General-service'
 import { getApiUrl } from '../config/apiConfig';
 import { Link } from 'react-router-dom';
 
-function categoryimg() {
+export default function CategoryImgList() {
 
-    
+
+
     const [categoryArr,setCategoryArr] = useState([]);
 
     const getCategoryList = () =>{
@@ -32,7 +33,7 @@ function categoryimg() {
                     <li>
                         <Link to="/">
                             <div className="layout row align-center justify-center img-small dynamic-img-container prel">
-                                <img src={getApiUrl(data.image)} alt="logo"/>
+                                <img src={getApiUrl(data.icon)} alt="logo"/>
                             </div>
                             <p>{data.title} </p>
                         </Link>
@@ -44,5 +45,3 @@ function categoryimg() {
     </div>
   )
 }
-
-export default categoryimg

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Bannerimg1, Bannerimg2, Bannerimg3 } from '../image';
+import { bannerList } from '../services/General-service';
+import { getApiUrl } from '../config/apiConfig';
+
 
 const options = {
     loop: true,
@@ -23,37 +26,46 @@ const options = {
 };
 
 function Banner() {
+
+    const [bannerArr,setBannerArr] = useState([]);
+
+    const getBannerList = () =>{
+        bannerList('').then((data) =>{
+            console.log(data);
+            setBannerArr(data.data);
+            }
+            
+        ).catch((error)=>{
+
+        })
+    }
+
+    useEffect(()=> {
+        getBannerList();
+    },[])
+
     return (
         <div className='banner-sec App'>
             <div className="Content layout BreakPointContainer">
                 <OwlCarousel className='owl-theme' loop margin={10} nav {...options}>
-                    <div className='item'>
-                        <a href="#">
-                            <div className="DynamicHeightLoaderWrapper">
-                                <div className="DynamicHeightLoader layout row align-center justify-center" style={{ paddingTop: '46%' }}>
-                                    <img src={Bannerimg1} alt="logo" className='img-resp DynamicHeightLoaderImage' />
-                                </div>
+
+                    {
+                        bannerArr.map((data,index) =>(
+                            <div className='item'>
+                                <a href="#">
+                                    <div className="DynamicHeightLoaderWrapper">
+                                        <div className="DynamicHeightLoader layout row align-center justify-center" style={{ paddingTop: '46%' }}>
+                                            <img src={getApiUrl(data.banner_image)} alt="logo" className='img-resp DynamicHeightLoaderImage' />
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                    <div className='item'>
-                        <a href="#">
-                            <div className="DynamicHeightLoaderWrapper">
-                                <div className="DynamicHeightLoader layout row align-center justify-center" style={{ paddingTop: '46%' }}>
-                                    <img src={Bannerimg2} alt="logo" className='img-resp DynamicHeightLoaderImage' />
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div className='item'>
-                        <a href="#">
-                            <div className="DynamicHeightLoaderWrapper">
-                                <div className="DynamicHeightLoader layout row align-center justify-center" style={{ paddingTop: '46%' }}>
-                                    <img src={Bannerimg3} alt="logo" className='img-resp DynamicHeightLoaderImage' />
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                        ))
+                    }
+                    
+
+
+                    
                 </OwlCarousel>
             </div>
         </div>

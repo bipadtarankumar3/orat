@@ -413,6 +413,217 @@ const Header = () => {
                                 <div className='cursor-pointer MenuItem'>
                                     <a href="/" className='p4'>
                                         <div className="prel layout align-center"> <span> LEHENGAS </span></div> </a>
+                                        <div className="showSubMenuContent mega-dropdown">
+                                        <div className="layout full-height BreakPointContainer">
+                                            <div className="row">
+                                                <div className="flex xs2 layout column">
+                                                    
+                                                    <div className="m-l-12">
+                                                        <h4> <span className='prel'> SHOP BY DESIGNERS 2</span> </h4>
+                                                        <div>
+                                                            <div className="m-b-5">
+                                                                <a href="" className='prel'>
+                                                                    <span> Aster </span>
+                                                                </a>
+                                                            </div>
+                                                            <div className="m-b-5">
+                                                                <a href="" className='prel'>
+                                                                    <span> VASTRAA Jewellery </span>
+                                                                </a>
+                                                            </div>
+                                                            <div className="m-b-5">
+                                                                <a href="" className='prel'>
+                                                                    <span> Cosa Nostraa </span>
+                                                                </a>
+                                                            </div>
+                                                            <div className="m-b-5">
+                                                                <a href="" className='prel'>
+                                                                    <span> Zevar By Geeta </span>
+                                                                </a>
+                                                            </div>
+                                                            <div className="m-b-5">
+                                                                <a href="" className='prel'>
+                                                                    <span> Moh-Maya by Disha Khatri </span>
+                                                                </a>
+                                                            </div>
+                                                            <div className="m-b-5">
+                                                                <a href="" className='prel'>
+                                                                    <span> Auraa Trends </span>
+                                                                </a>
+                                                            </div>
+                                                            <div className="m-b-5">
+                                                                <a href="" className='prel'>
+                                                                    <span> House of D'oro </span>
+                                                                </a>
+                                                            </div>
+                                                            <div className="m-b-5">
+                                                                <a href="" className='prel'>
+                                                                    <span> Vivinia By Vidhi Mehra </span>
+                                                                </a>
+                                                            </div>
+                                                            <div className="m-b-5">
+                                                                <a href="" className='prel'>
+                                                                    <span> Tad Accessories </span>
+                                                                </a>
+                                                            </div>
+                                                            <div className="m-b-5">
+                                                                <a href="" className='prel'>
+                                                                    <span> Diosa Paris Jewellery </span>
+                                                                </a>
+                                                            </div>
+                                                            <div className="m-b-5">
+                                                                <a href="" className='SellAllLink demi-bold'>
+                                                                    <span> SEE ALL </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="flex xs2 layout column">
+                                                    <h4> <span className='prel'> Shop By category </span> </h4>
+                                                    <div className="m-b-5">
+                                                        <a href="/" className='prel'>
+                                                            <span>Womenswear</span>  </a>
+                                                    </div>
+                                                    <div className="m-b-5">
+                                                        <a href="/" className='prel'>
+                                                            <span>Menswear</span> </a>
+                                                    </div>
+                                                    <div className="m-b-5">
+                                                        <a href="/" className='prel'>
+                                                            <span>Designer Jewellery</span> </a>
+                                                    </div>
+                                                    <div className="m-b-5">
+                                                        <a href="/" className='prel'>
+                                                            <span>Decor</span> </a>
+                                                    </div>
+                                                    <div className="m-b-5">
+                                                        <a href="/" className='prel'>
+                                                            <span>Accessories</span> </a>
+                                                    </div>
+                                                    <div className="m-b-5">
+                                                        <a href="/" className='prel'>
+                                                            <span>Kidswear</span> </a>
+                                                    </div>
+                                                    <div className='mt-3'>
+                                                        <a href="/" className='SellAllLink demi-bold'> <span> SEE ALL </span></a>
+                                                    </div>
+                                                </div>
+                                                <div className="Product flex xs2 offset-xs0">
+                                                    <div className="layout column">
+                                                        <a href="" className='flex ProductImage'>
+                                                            <div className="DynamicHeightLoaderWrapper" style={{ paddingTop: '150%' }}>
+                                                                <div className="DynamicHeightLoader layout row align-center justify-center">
+                                                                    <img src={Headerimg1} alt='A descriptive text' className='img-resp DynamicHeightLoaderImage' />
+                                                                </div>
+                                                            </div>
+                                                            {/* <div className="animated-bg-placeholder"></div> */}
+                                                        </a>
+                                                        <div className="ProductImageDetail">
+                                                            <h4 className='ellipsis demi-bold'> Zoon Tribe </h4>
+                                                            <p className='ellipsis-two-line'> Rose Gold Hand Embroidered Kurta Set </p>
+                                                            <div className="ProductPrice layout align-center row wrap m-t-10">
+                                                                <span className='SpecialPrice p2 demi-bold'> ₹ 16,000 </span>
+                                                                <span className='InitialPrice p3'> ₹ 20,000</span>
+                                                                <span className='DiscountPriceRound p3'> 20% OFF </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="Product flex xs2">
+                                                    <div className="layout column">
+                                                        <a href="" className='flex ProductImage'>
+                                                            <div className="DynamicHeightLoaderWrapper" style={{ paddingTop: '150%' }}>
+                                                                <div className="DynamicHeightLoader layout row align-center justify-center">
+                                                                    <img src={Headerimg2} alt='A descriptive text' className='img-resp DynamicHeightLoaderImage' />
+                                                                </div>
+                                                            </div>
+                                                            {/* <div className="animated-bg-placeholder"></div> */}
+                                                        </a>
+                                                        <div className="ProductImageDetail">
+                                                            <h4 className='ellipsis demi-bold'> fine threads by hina &.. </h4>
+                                                            <p className='ellipsis-two-line'> Rose Gold Hand Embroidered Kurta Set </p>
+                                                            <div className="ProductPrice layout align-center row wrap m-t-10">
+                                                                <span className='SpecialPrice p2 demi-bold'> ₹ 16,000 </span>
+                                                                <span className='InitialPrice p3'> ₹ 20,000</span>
+                                                                <span className='DiscountPriceRound p3'> 20% OFF </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="Product flex xs2">
+                                                    {/* <ul>
+                                                        <li>
+                                                            <a href="/">
+                                                                <img src={Headerimg3} alt='A descriptive text' />
+                                                            </a>
+                                                            <div className="header-title">
+                                                                <h6> Vandana sethi </h6>
+                                                                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                                                                <div className="price-div">
+                                                                    <p className='text-dark'> ₹66,850 <span className='text-decoration-line-through text-secondary'> ₹95,500 </span> <span className='text-danger'> 30% OFF </span> </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul> */}
+                                                    <div className="layout column">
+                                                        <a href="" className='flex ProductImage'>
+                                                            <div className="DynamicHeightLoaderWrapper" style={{ paddingTop: '150%' }}>
+                                                                <div className="DynamicHeightLoader layout row align-center justify-center">
+                                                                    <img src={Headerimg3} alt='A descriptive text' className='img-resp DynamicHeightLoaderImage' />
+                                                                </div>
+                                                            </div>
+                                                            {/* <div className="animated-bg-placeholder"></div> */}
+                                                        </a>
+                                                        <div className="ProductImageDetail">
+                                                            <h4 className='ellipsis demi-bold'> Vandana sethi </h4>
+                                                            <p className='ellipsis-two-line'> Rose Gold Hand Embroidered Kurta Set </p>
+                                                            <div className="ProductPrice layout align-center row wrap m-t-10">
+                                                                <span className='SpecialPrice p2 demi-bold'> ₹ 16,000 </span>
+                                                                <span className='InitialPrice p3'> ₹ 20,000</span>
+                                                                <span className='DiscountPriceRound p3'> 20% OFF </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="Product flex xs2">
+                                                    {/* <ul>
+                                                        <li>
+                                                            <a href="/">
+                                                                <img src={Headerimg4} alt='A descriptive text' />
+                                                            </a>
+                                                            <div className="header-title">
+                                                                <h6> mehak sharma </h6>
+                                                                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                                                                <div className="price-div">
+                                                                    <p className='text-dark'> ₹30,590 <span className='text-decoration-line-through text-secondary'> ₹43,700 </span> <span className='text-danger'> 30% OFF </span> </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul> */}
+                                                    <div className="layout column">
+                                                        <a href="" className='flex ProductImage'>
+                                                            <div className="DynamicHeightLoaderWrapper" style={{ paddingTop: '150%' }}>
+                                                                <div className="DynamicHeightLoader layout row align-center justify-center">
+                                                                    <img src={Headerimg4} alt='A descriptive text' className='img-resp DynamicHeightLoaderImage' />
+                                                                </div>
+                                                            </div>
+                                                            {/* <div className="animated-bg-placeholder"></div> */}
+                                                        </a>
+                                                        <div className="ProductImageDetail">
+                                                            <h4 className='ellipsis demi-bold'> mehak sharma </h4>
+                                                            <p className='ellipsis-two-line'> Rose Gold Hand Embroidered Kurta Set </p>
+                                                            <div className="ProductPrice layout align-center row wrap m-t-10">
+                                                                <span className='SpecialPrice p2 demi-bold'> ₹ 16,000 </span>
+                                                                <span className='InitialPrice p3'> ₹ 20,000</span>
+                                                                <span className='DiscountPriceRound p3'> 20% OFF </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className='cursor-pointer MenuItem'>
                                     <a href="/" className='p4'> <div className="prel layout align-center"> <span> KURTA SETS </span></div></a>
