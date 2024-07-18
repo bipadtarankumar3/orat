@@ -2,16 +2,13 @@ import React, { useEffect, useState } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import { Bannerimg1, Bannerimg2, Bannerimg3 } from '../image';
 import { bannerList } from '../services/General-service';
-import { getApiUrl } from '../config/apiConfig';
-
 
 const options = {
     loop: true,
     margin: 10,
     nav: true,
-    dots:false,
+    dots: false,
     responsive: {
         0: {
             items: 1
@@ -26,47 +23,44 @@ const options = {
 };
 
 function Banner() {
+    const [bannerArr, setBannerArr] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const [bannerArr,setBannerArr] = useState([]);
+    const getBannerList = () => {
+        bannerList('')
+            .then((data) => {
+                console.log(data);
+                setBannerArr(data.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error fetching banner list:", error);
+                setLoading(false);
+            });
+    };
 
-    const getBannerList = () =>{
-        bannerList('').then((data) =>{
-            console.log(data);
-            setBannerArr(data.data);
-            }
-            
-        ).catch((error)=>{
-
-        })
-    }
-
-    useEffect(()=> {
+    useEffect(() => {
         getBannerList();
-    },[])
+    }, []);
 
     return (
         <div className='banner-sec App'>
             <div className="Content layout BreakPointContainer">
-                <OwlCarousel className='owl-theme' loop margin={10} nav {...options}>
-
-                    {
-                        bannerArr.map((data,index) =>(
-                            <div className='item'>
+                {!loading && bannerArr.length > 0 && (
+                    <OwlCarousel className='owl-theme' {...options}>
+                        {bannerArr.map((data, index) => (
+                            <div className='item' key={index}>
                                 <a href="#">
                                     <div className="DynamicHeightLoaderWrapper">
                                         <div className="DynamicHeightLoader layout row align-center justify-center" style={{ paddingTop: '46%' }}>
-                                            <img src={getApiUrl(data.banner_image)} alt="logo" className='img-resp DynamicHeightLoaderImage' />
+                                            <img src={data.banner_image} alt="logo" className='img-resp DynamicHeightLoaderImage' />
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                        ))
-                    }
-                    
-
-
-                    
-                </OwlCarousel>
+                        ))}
+                    </OwlCarousel>
+                )}
             </div>
         </div>
     );

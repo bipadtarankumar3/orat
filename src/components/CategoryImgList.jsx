@@ -33,7 +33,7 @@ export default function CategoryImgList() {
                     <li>
                         <Link to="/">
                             <div className="layout row align-center justify-center img-small dynamic-img-container prel">
-                                <img src={getApiUrl(data.icon)} alt="logo"/>
+                                <img src={data.icon} alt="logo"/>
                             </div>
                             <p>{data.title} </p>
                         </Link>

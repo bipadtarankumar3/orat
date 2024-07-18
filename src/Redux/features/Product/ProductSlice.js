@@ -1,7 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { STATUS } from "../../../constants/Status";
+import { homeProducts } from "../../../services/Product-service";
 const base_url = "https://fakestoreapi.com/";
+
+
+
 
 const initialState = {
   status: "",

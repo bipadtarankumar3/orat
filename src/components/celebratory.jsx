@@ -9,7 +9,10 @@ function Celebratory() {
     const [categoryArr,setCategoryArr] = useState([]);
 
     const getCategoryList = () =>{
-        categoryList('').then((data) =>{
+        var limit = {
+            limit:5
+        }
+        categoryList(limit).then((data) =>{
             console.log(data);
             setCategoryArr(data.data);
             }
@@ -44,7 +47,7 @@ function Celebratory() {
                                             <a href="">
                                                 <div className="DynamicHeightLoaderWrapper" style={{ paddingTop: '35%' }}>
                                                     <div className="DynamicHeightLoader layout row align-center justify-center" style={{ paddingTop: '30%' }}>
-                                                        <img src={getApiUrl(data.cover)} alt="logo" className='img-resp DynamicHeightLoaderImage' style={{ padding: '0px' }} />
+                                                        <img src={data.cover} alt="logo" className='img-resp DynamicHeightLoaderImage' style={{ padding: '0px' }} />
                                                     </div>
                                                     {/* <div className="animated-bg-placeholder"></div> */}
                                                 </div>
@@ -62,7 +65,7 @@ function Celebratory() {
                                             <a href="">
                                                 <div className="DynamicHeightLoaderWrapper" style={{ paddingTop: '100%' }}>
                                                     <div className="DynamicHeightLoader layout row align-center justify-center" style={{ paddingTop: '32%' }}>
-                                                        <img src={getApiUrl(data.thumbnail)} alt="logo" className='img-resp DynamicHeightLoaderImage' style={{ padding: '0px' }} />
+                                                        <img src={data.thumbnail} alt="logo" className='img-resp DynamicHeightLoaderImage' style={{ padding: '0px' }} />
                                                     </div>
                                                     {/* <div className="animated-bg-placeholder"></div> */}
                                                 </div>

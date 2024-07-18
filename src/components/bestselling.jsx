@@ -47,7 +47,7 @@ function Bestselling() {
                                             <a href="">
                                                 <div className="DynamicHeightLoaderWrapper" style={{ paddingTop: '40%' }}>
                                                     <div className="DynamicHeightLoader layout row align-center justify-center" style={{ paddingTop: '30%' }}>
-                                                        <img src={getApiUrl(data.designer_cover)} alt="logo" className='img-resp DynamicHeightLoaderImage' style={{ padding: '0px' }} />
+                                                        <img src={data.designer_cover} alt="logo" className='img-resp DynamicHeightLoaderImage' style={{ padding: '0px' }} />
                                                     </div>
                                                 </div>
                                                 <div className="ImageTextDetail CategoryImageTextDetail">
@@ -63,7 +63,7 @@ function Bestselling() {
                                             <a href="">
                                                 <div className="DynamicHeightLoaderWrapper" style={{ paddingTop: '112%' }}>
                                                     <div className="DynamicHeightLoader layout row align-center justify-center" style={{ paddingTop: '32%' }}>
-                                                        <img src={getApiUrl(data.designer_thumbnail)} alt="logo" className='img-resp DynamicHeightLoaderImage' style={{ padding: '0px' }} />
+                                                        <img src={data.designer_thumbnail} alt="logo" className='img-resp DynamicHeightLoaderImage' style={{ padding: '0px' }} />
                                                     </div>
                                                 </div>
                                                 <div className="ImageTextDetail CategoryImageTextDetail">

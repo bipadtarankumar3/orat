@@ -9,7 +9,7 @@ import Wendell from '../components/wendell';
 import Celebrating from '../components/celebrating';
 import Handpicked from '../components/handpicked';
 import Occasion from '../components/occasion';
-import Eid from '../components/eid';
+import Eid from '../components/Eid';
 import Hidden from '../components/hidden';
 import Jewel from '../components/jewel';
 import Decor from '../components/decor';

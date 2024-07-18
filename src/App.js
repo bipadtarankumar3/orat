@@ -23,7 +23,8 @@ import Mobilefooter from '../src/components/mobilefooter'
 
 function App() {
   return (
-    <Router>
+    // <Router >
+    <Router  basename="/orat">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
