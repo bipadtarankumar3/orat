@@ -31,7 +31,7 @@ function recently() {
                 <div className="BreakPointContainer">
                     <div className="layout row justify-space-between align-center text-left SectionTitle">
                         <h1 className='m-t-0 m-b-0 demi-bold w-auto'> RECENTLY VIEWED PRODUCTS </h1>
-                        <Link to="/category" className='ViewAllUrlsLink pernia-color-hover h5 demi-bold w-auto'>VIEW ALL</Link>
+                        <Link to="/products" className='ViewAllUrlsLink pernia-color-hover h5 demi-bold w-auto'>VIEW ALL</Link>
                     </div>
                     <OwlCarousel className='owl-theme' loop nav {...optionrecently}>
                         <div className='item'>

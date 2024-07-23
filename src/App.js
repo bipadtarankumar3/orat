@@ -19,6 +19,7 @@ import Wishlist from './pages/wishlist';
 import Settings from './pages/settings';
 import Giftcards from './pages/giftcards';
 import Mobilefooter from '../src/components/mobilefooter'
+import Products from './pages/Products';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/category" element={<Category />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/singleproduct" element={<Singleproduct />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/address" element={<Address />} />

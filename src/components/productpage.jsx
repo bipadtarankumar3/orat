@@ -4,32 +4,48 @@ import { Link } from 'react-router-dom';
 import { CiFilter } from "react-icons/ci";
 import Button from 'react-bootstrap/Button';
 import { Modal, Tabs, Tab } from 'react-bootstrap';
+import Filter from './Filter';
+import Select from 'react-select';
 
-const ProductPage = () => {
-    const [isDropdownVisible, setDropdownVisible] = useState(false);
-    const [show, setShow] = useState(false);
-    const [activeTab, setActiveTab] = useState('v-pills-home');
 
-    const toggleDropdown = () => {
-        setDropdownVisible(!isDropdownVisible);
+export default function Productpage() {
+  
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [show, setShow] = useState(false);
+  const [activeTab, setActiveTab] = useState('v-pills-home');
+
+  const toggleDropdown = () => {
+      setDropdownVisible(!isDropdownVisible);
+  };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleTabClick = (tabId) => {
+      setActiveTab(tabId);
     };
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const handleTabClick = (tabId) => {
-        setActiveTab(tabId);
-      };
 
-      const [showSizeModal, setShowSizeModal] = useState(false);
-      const [showCustomModal, setShowCustomModal] = useState(false);
-  
-      const handleCloseSizeModal = () => setShowSizeModal(false);
-      const handleShowSizeModal = () => setShowSizeModal(true);
-  
-      const handleCloseCustomModal = () => setShowCustomModal(false);
-      const handleClosCustomModal = () => setShowCustomModal(false);
-      const handleShowCustomModal = () => setShowCustomModal(true);
+    const [showSizeModal, setShowSizeModal] = useState(false);
+    const [showCustomModal, setShowCustomModal] = useState(false);
 
-    return (
+    const handleCloseSizeModal = () => setShowSizeModal(false);
+    const handleShowSizeModal = () => setShowSizeModal(true);
+
+    const handleCloseCustomModal = () => setShowCustomModal(false);
+    const handleClosCustomModal = () => setShowCustomModal(false);
+    const handleShowCustomModal = () => setShowCustomModal(true);
+
+
+  const options = [
+    { value: 'Popular', label: 'Popular' },
+    { value: 'Latest', label: 'Latest' },
+    { value: 'Price - Low to High', label: 'Price - Low to High' },
+  ];
+
+  const [selectedOption, setSelectedOption] = useState(null);
+
+
+  return (
+    <>
+        <Filter/>
         <div className="custom-flex Productpage ProductListContainer minWidth0">
             <div className="prel">
                 <div className="Banner m-t-20 prel">
@@ -61,12 +77,19 @@ const ProductPage = () => {
                             <div className="dd-header" onClick={toggleDropdown}>
                                 <div>
                                     <span className="dd-header-sort-text">Sort by: </span>
-                                    <span className="dd-header-title demi-bold">Popular</span>
+                                    <span className="dd-header-title demi-bold">
+                                    
+                                    </span>
+                                    <Select
+                              defaultValue={selectedOption}
+                              onChange={setSelectedOption}
+                              options={options}
+                            />  
                                 </div>
                                 <span className={`arrow-icon m-r-5 ${isDropdownVisible ? 'arrow-down-icon' : 'arrow-up-icon'}`}></span>
                             </div>
 
-                            {isDropdownVisible && (
+                            {/* {isDropdownVisible && (
                                 <ul className='dd-list bold'>
                                     <li className='dd-list-item font-normal selected'> Popular </li>
                                     <li className='dd-list-item font-normal'> Latest </li>
@@ -74,7 +97,8 @@ const ProductPage = () => {
                                     <li className='dd-list-item font-normal'> Price - High to Low </li>
                                     <li className='dd-list-item font-normal'> Discount - High to Low </li>
                                 </ul>
-                            )}
+                            )} */}
+                           
                         </div>
                         <div className="mobile_filter" onClick={handleShow}>
                             <CiFilter />
@@ -1249,7 +1273,7 @@ const ProductPage = () => {
                 </div>
             </div>
         </div>
-    )
+    
+    </>
+  )
 }
-
-export default ProductPage;
