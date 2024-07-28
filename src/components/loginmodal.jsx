@@ -94,7 +94,7 @@ function LoginModal({showModal,modalHide}) {
     };
 
     useEffect(() => {
-        console.log(userInfo);
+        // console.log(userInfo);
         if (userInfo) {
             // dispatch(fetchCart());
             // dispatch(fetchWishlist());

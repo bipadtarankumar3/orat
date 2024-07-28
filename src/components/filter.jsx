@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { categoryList } from '../services/General-service';
+import { productColor, productSize,occassionList } from '../services/Product-service';
 
 
 
@@ -20,6 +21,9 @@ const Filter = () => {
 
 
     const [categoryArr,setCategoryArr] = useState([]);
+    const [colorArr,setColorArr] = useState([]);
+    const [sizeArr,setSizeArr] = useState([]);
+    const [occassionArr,setOccassionArr] = useState([]);
 
     const getCategoryList = () =>{
         categoryList('').then((data) =>{
@@ -31,22 +35,80 @@ const Filter = () => {
 
         })
     }
+    const getColorList = () =>{
+        productColor('').then((data) =>{
+            console.log(data);
+            setColorArr(data.data);
+        }
+            
+        ).catch((error)=>{
+
+        })
+    }
+    const getSizeList = () =>{
+        productSize('').then((data) =>{
+            console.log(data);
+            setSizeArr(data.data);
+            }
+            
+        ).catch((error)=>{
+
+        })
+    }
+
+    const getOccassionList = () =>{
+        occassionList('').then((data) =>{
+            console.log(data);
+            setOccassionArr(data.data);
+            }
+            
+        ).catch((error)=>{
+
+        })
+    }
 
     useEffect(()=> {
         getCategoryList();
+        getColorList();
+        getSizeList();
+        getOccassionList();
     },[]);
 
         
     const [searchTerm, setSearchTerm] = useState('');
+    const [searchColor, setSearchColor] = useState('');
+    const [searchSize, setSearchSize] = useState('');
+    const [searchOccassion, setSearchOccassion] = useState('');
 
     // Handler for search input changes
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
+    const handleColorSearchChange = (event) => {
+        setSearchColor(event.target.value);
+    };
+    const handleSizeSearchChange = (event) => {
+        setSearchSize(event.target.value);
+    };
+    const handleOccassionSearchChange = (event) => {
+        setSearchOccassion(event.target.value);
+    };
 
     // Filter the category array based on the search term
     const filteredCategories = categoryArr.filter((data) =>
         data.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const filteredColor = colorArr.filter((data) =>
+        data.title.toLowerCase().includes(searchColor.toLowerCase())
+    );
+
+    const filteredSize = sizeArr.filter((data) =>
+        data.size.toLowerCase().includes(searchSize.toLowerCase())
+    );
+
+    const filteredOccassion = occassionArr.filter((data) =>
+        data.title.toLowerCase().includes(searchOccassion.toLowerCase())
     );
 
 
@@ -85,129 +147,34 @@ const Filter = () => {
                         <h3 className='demi-bold mt-3'style={{fontWeight: '700'}}> NEW  </h3>
                         <h5 class="CheckboxListTitle demi-bold">SHOP BY OCCASSION</h5>
                         <div className="CheckboxListSearch">
-                            <input type="text" value="" placeholder="Search" />
+                            <input
+                            type="text"
+                            value={searchOccassion}
+                            onChange={handleOccassionSearchChange}
+                            placeholder="Search"
+                            />
                         </div>
                         <div className="CheckboxListOptions layout row align-start wrap">
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Kurta Set</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
+
+
+
+                            {
+                                filteredOccassion.map((data,index) =>(
+
+                                <div  key={data.id} className="flex xs12 CheckboxColorOptions">
+                                    <div className="PslCheckbox flex">
+                                        <label>
+                                            <input type="checkbox" name="5" class="PslCheckboxInput" />
+                                            <span class="PslCheckboxCheckmark"></span>
+                                            <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">{data.title} </span>
+                                            <span class="PslCheckboxCount p2">(61951)</span>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Dresses</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Lehenga</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Sarees</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Necklaces</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Earrings</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Embroidered Lehenga</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Anarkali Set</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Sharara Set</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Co-Ord Set</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Pant Set</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Anarkali Set</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
+
+                                ))
+                            }
+
                         </div>
                         <div className="CheckboxListFooter layout align-center">
                             <button className='btn-icon pernia-color'>
@@ -254,129 +221,33 @@ const Filter = () => {
                     <div className="CheckboxList">
                         <h5 class="CheckboxListTitle demi-bold">Size</h5>
                         <div className="CheckboxListSearch">
-                            <input type="text" value="" placeholder="Search" />
+                            <input
+                                type="text"
+                                value={searchSize}
+                                onChange={handleSizeSearchChange}
+                                placeholder="Search"
+                                />
                         </div>
                         <div className="CheckboxListOptions layout row align-start wrap">
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">XS</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
+
+
+                            {
+                                filteredSize.map((data,index) =>(
+
+                                <div  key={data.id} className="flex xs12 CheckboxColorOptions">
+                                    <div className="PslCheckbox flex">
+                                        <label>
+                                            <input type="checkbox" name="5" class="PslCheckboxInput" />
+                                            <span class="PslCheckboxCheckmark"></span>
+                                            <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">{data.size} </span>
+                                            <span class="PslCheckboxCount p2">(61951)</span>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">S</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">M</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">L</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">XL</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">XXL</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">3XL</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">4XL</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">5XL</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">6XL</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Custom Tailored</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark"></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Free Size</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
+
+                                ))
+                            }
+
                         </div>
                         <div className="CheckboxListFooter layout align-center">
                             <button className='btn-icon pernia-color'>
@@ -388,126 +259,23 @@ const Filter = () => {
                         <h5 class="CheckboxListTitle demi-bold">Color</h5>
 
                         <div className="CheckboxListOptions layout row align-start wrap">
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#ffd700', borderColor: '#ffd700' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Gold</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#fff', borderColor: '#000' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">White</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#000', borderColor: '#000' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Black</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#4E8B08', borderColor: '#4E8B08' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Green</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#FFC0CB', borderColor: '#FFC0CB' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Pink</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#ffff00', borderColor: '#ffff00' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Yellow</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#ff0000', borderColor: '#ff0000' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Red</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#65DDEF', borderColor: '#65DDEF' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Powder Blue</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#FFB7DE', borderColor: '#FFB7DE' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Blush Pink</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#fff', borderColor: '#000' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Multi</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#A92AED', borderColor: '#A92AED' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Purple</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="flex xs12 CheckboxColorOptions">
-                                <div className="PslCheckbox flex">
-                                    <label>
-                                        <input type="checkbox" name="5" class="PslCheckboxInput" />
-                                        <span class="PslCheckboxCheckmark" style={{ background: '#0051C2', borderColor: '#0051C2' }}></span>
-                                        <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">Cobalt Blue</span>
-                                        <span class="PslCheckboxCount p2">(61951)</span>
-                                    </label>
-                                </div>
-                            </div>
+
+
+                            {
+                                filteredColor.map((data,index) =>(
+                                    <div className="flex xs12 CheckboxColorOptions">
+                                        <div className="PslCheckbox flex">
+                                            <label>
+                                                <input type="checkbox" name="5" class="PslCheckboxInput" />
+                                                <span class="PslCheckboxCheckmark" style={{ background: data.color, borderColor: data.size }}></span>
+                                                <span class="PslCheckboxText m-l-5 m-r-5 ellipsis p2">{data.title}</span>
+                                                <span class="PslCheckboxCount p2">(61951)</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+
                         </div>
                         <div className="CheckboxListFooter layout align-center">
                             <button className='btn-icon pernia-color'>

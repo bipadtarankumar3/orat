@@ -11,3 +11,4 @@ export const categoryList = (data=null) => {
 export const designerList = (data) => {
     return  localAxios.post('/designer_list',data).then((response) => response.data);
 }
+

@@ -10,7 +10,7 @@ function category() {
       <div className='App other-page-top'>
         <div className="BreakPointContainer AppContent">
           <div className="layout ProductList align-start">
-            <Filter />
+          
             <Productpage/>
           </div>
         </div>
